@@ -33,8 +33,8 @@
         <navbar id="navbar"></navbar>
         <main class="p-4">
           <div class="uppercase flex items-center justify-between font-bold mb-4 text-xl space-x-1">
-              <span>
-                My Tickets
+              <span class="text-sm">
+                Pending Tickets
               </span>
               <div class="text-sm font-normal flex items-center capitalize space-x-1">
                 <div class="flex items-center space-x-1">
@@ -45,81 +45,22 @@
                     <option>Status</option>
                   </select>
                 </div>
-                <button onclick="create_ticket_modal.showModal()" class="btn btn-sm bg-green-400 hover:bg-green-500">
-                  <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg>
-                  <span  class="hidden md:block">Create New</span>
-                </button>
-                <dialog id="create_ticket_modal" class="modal">
-                  <div class="modal-box">
-                    <form method="dialog">
-                      <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-                    </form>
-                    <h3 class="text-lg font-bold">Create Ticket</h3>
-                    <div class="py-4">
-                      <form action="" method="post" class="space-y-2">
-                        <label class="form-control w-full">
-                          <div class="label">
-                            <span class="label-text font-bold">Subject</span>
-                          </div>
-                          <input type="text" placeholder="Subject" class="input input-bordered input-sm w-full" />
-                        </label>
-                        <label class="form-control w-full">
-                          <div class="label">
-                            <span class="label-text font-bold">Department / Team</span>
-                          </div>
-                          <select class="select select-bordered w-full select-sm">
-                            <option disabled selected>Select Department</option>
-                            <option>IT</option>
-                            <option>HR</option>
-                            <option>Legal</option>
-                            <option>Chief Admin</option>
-                          </select>
-                        </label>
-                        <label class="form-control w-full">
-                          <div class="label">
-                            <span class="label-text font-bold">Description</span>
-                          </div>
-                          <textarea class="textarea textarea-bordered h-24" placeholder="Description"></textarea>
-                        </label>
-
-                        <button type="submit" class="btn bg-green-300 hover:bg-green-400 btn-md w-full">Submit</button>
-                      </form>
-                    </div>
-                  </div>
-                </dialog>
+                <div class="tooltip" data-tip="Resolved Tickets">
+                    <a href="/admin/resolved-tickets.html" class="btn btn-sm bg-green-400 hover:bg-green-500">
+                        <!-- <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>plus</title><path d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z" /></svg> -->
+                        <svg class="h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>check-circle-outline</title><path d="M12 2C6.5 2 2 6.5 2 12S6.5 22 12 22 22 17.5 22 12 17.5 2 12 2M12 20C7.59 20 4 16.41 4 12S7.59 4 12 4 20 7.59 20 12 16.41 20 12 20M16.59 7.58L10 14.17L7.41 11.59L6 13L10 17L18 9L16.59 7.58Z" /></svg>
+                        <span  class="hidden md:block">Resolved Tickets</span>
+                    </a>
+                </div>
               </div>
-
           </div>
           <div id="content-loading" class="mx-auto mt-42 text-center hidden">
             <span class="loading loading-ring loading-lg"></span>
           </div>
-          <div class="space-y-2 ">
+          <div class="space-y-2 ">          
             <div class="collapse collapse-plus bg-base-200 rounded-md">
               <input type="radio" name="my-accordion-3" />
               <div class="collapse-title text-md font-medium">
-                <span class="text-gray-500 text-sm">
-                  #12345
-                </span>
-                <span>
-                  Ticket Title
-                </span> 
-                <span class="rounded-full bg-cyan-300 text-xs px-2 py-1">
-                  Resolved
-                </span>
-              </div>
-              <div class="collapse-content">
-                <p class="text-sm">Ticket description</p>
-                <div class="flex justify-end">
-                  <button class="btn btn-sm bg-green-300 hover:bg-green-400 text-black">View</button>
-                </div>
-              </div>
-            </div>            
-            <div class="collapse collapse-plus bg-base-200 rounded-md">
-              <input type="radio" name="my-accordion-3" />
-              <div class="collapse-title text-md font-medium">
-                <span class="text-gray-500 text-sm">
-                  #12346
-                </span>
                 <span>
                   Ticket Title
                 </span> 
@@ -130,16 +71,13 @@
               <div class="collapse-content">
                 <p class="text-sm">Ticket description</p>
                 <div class="flex justify-end">
-                  <button class="btn btn-sm bg-green-300 hover:bg-green-400 text-black">View</button>
+                  <button onclick="assign_ticket_modal.showModal()" class="btn btn-sm bg-yellow-300 hover:bg-yellow-400 text-black">Re-assign</button>
                 </div>
               </div>
             </div>            
             <div class="collapse collapse-plus bg-base-200 rounded-md">
               <input type="radio" name="my-accordion-3" />
               <div class="collapse-title text-md font-medium">
-                <span class="text-gray-500 text-sm">
-                  #12347
-                </span>
                 <span>
                   Ticket Title
                 </span> 
@@ -150,13 +88,40 @@
               <div class="collapse-content">
                 <p class="text-sm">Ticket description</p>
                 <div class="flex justify-end">
-                  <button class="btn btn-sm bg-green-300 hover:bg-green-400 text-black">View</button>
+                  <button onclick="assign_ticket_modal.showModal()" class="btn btn-sm bg-green-300 hover:bg-green-400 text-black">Assign</button>
                 </div>
               </div>
             </div>            
           </div>
         </main>
       </div>
+
+      <dialog id="assign_ticket_modal" class="modal">
+        <div class="modal-box">
+          <form method="dialog">
+            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+          </form>
+          <h3 class="text-lg font-bold">Assign</h3>
+          <div class="py-4">
+            <form action="" method="post" class="space-y-2">
+              <label class="form-control w-full">
+                <div class="label">
+                  <span class="label-text font-bold">Agent</span>
+                </div>
+                <select class="select select-bordered w-full select-sm">
+                  <option disabled selected>Select Agent</option>
+                  <option>Joyce Ann Bahia</option>
+                  <option>John Edward Ronda</option>
+                  <option>Nino De guzman</option>
+                  <option>Li Xander Salvador</option>
+                </select>
+              </label>
+              <button type="submit" class="btn bg-green-300 hover:bg-green-400 btn-md w-full">Assign</button>
+            </form>
+          </div>
+        </div>
+      </dialog>
+
       <div class="drawer-side">
         <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
           <!-- <img class="h-5 w-5" src="../assets/images/nia-logo.png" alt="" srcset=""> -->
@@ -232,15 +197,15 @@
     </div>
   </bottom-nav>
 </body>
-
 <script>
-  const role = "user";
-        fetch('../components/navbar.html')
-              .then(response => response.text())
-              .then(data => {
-                  document.getElementById('navbar').innerHTML = data;
-                  modifyContent(role);
-              });
+    const role = "admin";
+    fetch('../components/navbar.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('navbar').innerHTML = data;
+
+            modifyContent(role);
+        });
     
         function modifyContent(role) {
             const adminElements = document.querySelectorAll('[data-role="admin"]');
